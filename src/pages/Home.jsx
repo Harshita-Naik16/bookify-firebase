@@ -31,6 +31,9 @@ const Home = () => {
 
   return (
     <div className="container mt-5">
+      <h1 className="text-muted fw-light text-center mb-5 border border-secondary-subtle p-4">
+        Buy And Sell Books Online With <strong>Bookify</strong>
+      </h1>
       <div className="mb-5 d-flex justify-content-center">
         {back && (
           <Button
