@@ -21,6 +21,7 @@ An App where you can sell or buy books.
 - All the firebase code is stored in firebase.jsx file which is created using react context that is wrapped around whole app in main.jsx
 - main.jsx is the entry point of our app where all the routing config is handled.
 - Also tried react bootstrap for the first time. It sure has some good responsive components which eases the work of a developer and goes well with react.
+- When deployed to vercel I faced a problem where routing was giving me a 404 error which was solved after adding vercel.json config. [solution article](https://medium.com/@emmanuelomemgboji/handling-404-errors-on-vercel-deployments-a-step-by-step-guide-with-react-vite-and-31fc4d865dc9)
 
 ### File Structure
 
