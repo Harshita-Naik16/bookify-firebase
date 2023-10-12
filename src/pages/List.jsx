@@ -49,6 +49,7 @@ const List = () => {
         <Form.Group className="mb-3" controlId="formBasicEmail">
           <Form.Label>Book Name</Form.Label>
           <Form.Control
+            required
             disabled={!user}
             type="text"
             placeholder="Enter book name"
@@ -60,6 +61,7 @@ const List = () => {
         <Form.Group className="mb-3" controlId="formBasicEmail">
           <Form.Label>Author Name</Form.Label>
           <Form.Control
+            required
             disabled={!user}
             type="text"
             placeholder="Enter author name"
@@ -71,6 +73,7 @@ const List = () => {
         <Form.Group className="mb-3" controlId="formBasicPassword">
           <Form.Label>ISBN Number</Form.Label>
           <Form.Control
+            required
             disabled={!user}
             type="text"
             placeholder="Enter ISBN Number"
@@ -82,6 +85,7 @@ const List = () => {
         <Form.Group className="mb-3" controlId="formBasicPassword">
           <Form.Label>Price</Form.Label>
           <Form.Control
+            required
             disabled={!user}
             type="text"
             placeholder="Enter Price"
@@ -93,6 +97,7 @@ const List = () => {
         <Form.Group className="mb-3" controlId="formBasicPassword">
           <Form.Label>Add Image</Form.Label>
           <Form.Control
+            required
             disabled={!user}
             type="file"
             onChange={(e) => setCoverPic(e.target.files[0])}
