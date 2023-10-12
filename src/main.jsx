@@ -3,7 +3,7 @@ import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import App from "./App.jsx";
 import "./index.css";
-import Login from "./pages/login.jsx";
+import Login from "./pages/Login.jsx";
 import { FirebaseProvider } from "./store/firebase.jsx";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Register from "./pages/Register.jsx";
