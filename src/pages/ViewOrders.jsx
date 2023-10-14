@@ -15,32 +15,36 @@ const ViewOrders = () => {
   }, [firebase.isLoggedIn]);
 
   return (
-    <div className="container mt-5 d-flex flex-wrap justify-content-center gap-3">
-      {firebase.isLoggedIn ? (
-        orders.length > 0 ? (
-          orders.map((order) => {
-            const data = order.data();
+    <div className="container mt-5 mx-auto">
+      <h1 className="text-muted fw-light text-center mb-5">Orders</h1>
+      <div className="container mt-5 d-flex flex-wrap justify-content-center gap-3">
+        {firebase.isLoggedIn ? (
+          orders.length > 0 ? (
+            orders.map((order) => {
+              const data = order.data();
 
-            return (
-              <BookCard
-                key={data.id}
-                id={data.id}
-                data={data}
-                btn={"View Orders"}
-                path={`/book/view/order-detail/${order.id}`}
-              />
-            );
-          })
+              return (
+                <BookCard
+                  key={data.id}
+                  id={data.id}
+                  data={data}
+                  btn={"View Orders"}
+                  path={`/book/view/order-detail/${order.id}`}
+                />
+              );
+            })
+          ) : (
+            <Alert variant={"warning"} className="mx-auto">
+              <Alert.Link href="/book/list">List</Alert.Link> books to view
+              orders
+            </Alert>
+          )
         ) : (
           <Alert variant={"warning"} className="mx-auto">
-            <Alert.Link href="/book/list">List</Alert.Link> books to view orders
+            <Alert.Link href="/login">Login</Alert.Link> to View Orders
           </Alert>
-        )
-      ) : (
-        <Alert variant={"warning"} className="mx-auto">
-          <Alert.Link href="/login">Login</Alert.Link> to View Orders
-        </Alert>
-      )}
+        )}
+      </div>
     </div>
   );
 };

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useFirebase } from "../store/firebase";
 import Order from "../components/Order";
+import { sortByDate } from "../lib/helper";
 
 const ViewOrderDetail = () => {
   const [orders, setOrders] = useState([]);
@@ -11,7 +12,10 @@ const ViewOrderDetail = () => {
   const firebase = useFirebase();
 
   useEffect(() => {
-    firebase.getOrderDetail(params.bookId).then((orders) => setOrders(orders));
+    firebase.getOrderDetail(params.bookId).then((orders) => {
+      let sortOrders = sortByDate(orders);
+      setOrders(sortOrders);
+    });
   }, []);
 
   return (

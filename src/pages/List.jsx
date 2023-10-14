@@ -23,6 +23,11 @@ const List = () => {
       .then((res) => {
         setShow(true);
         setSuccess(true);
+        setBookName("");
+        setIsbnNumber("");
+        setPrice("");
+        setCoverPic({});
+        setAuthorName("");
       })
       .catch((err) => {
         setShow(true);

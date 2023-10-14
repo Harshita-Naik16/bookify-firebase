@@ -16,10 +16,10 @@ const Order = ({ order, bookId }) => {
     setCompleted(data.completed);
   }, []);
 
-  const handleAccept = (orderId) => {
+  const handleAccept = (orderId, customerId) => {
     if (firebase.isLoggedIn) {
       firebase
-        .updateOrderStatus(bookId, orderId, firebase.userState.uid)
+        .updateOrderStatus(bookId, orderId, customerId)
         .then((res) => setCompleted(true))
         .catch((err) => console.log(err));
     }
@@ -38,7 +38,10 @@ const Order = ({ order, bookId }) => {
           order accepted
         </Button>
       ) : (
-        <Button variant="success" onClick={() => handleAccept(order.id)}>
+        <Button
+          variant="success"
+          onClick={() => handleAccept(order.id, data.customerId)}
+        >
           Accept
         </Button>
       )}

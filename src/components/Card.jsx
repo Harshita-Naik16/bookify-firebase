@@ -22,7 +22,13 @@ const BookCard = ({ data, path, btn }) => {
   return (
     <div>
       <Card style={{ width: "18rem", margin: "20px" }}>
-        <Card.Img variant="top" src={coverImage} loading="lazy" height={300} />
+        <Card.Img
+          variant="top"
+          src={coverImage}
+          loading="lazy"
+          height={300}
+          style={{ objectFit: "contain" }}
+        />
         <Card.Body>
           <Card.Title>{name}</Card.Title>
           <Card.Text>

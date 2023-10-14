@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useFirebase } from "../store/firebase";
 import Purchase from "../components/Purchase";
 import Alert from "react-bootstrap/Alert";
+import { sortByDate } from "../lib/helper";
 
 const Purchases = () => {
   const [orders, setOrders] = useState([]);
@@ -9,7 +10,10 @@ const Purchases = () => {
 
   useEffect(() => {
     if (firebase.isLoggedIn) {
-      firebase.getPurchasesList().then((res) => setOrders(res.docs));
+      firebase.getPurchasesList().then((res) => {
+        let sortOrders = sortByDate(res.docs);
+        setOrders(sortOrders);
+      });
     }
   }, [firebase.isLoggedIn]);
 

@@ -130,6 +130,7 @@ export const FirebaseProvider = ({ children }) => {
       completed: false,
       placedOn: Timestamp.fromDate(new Date()),
       address: address,
+      customerId: userState.uid,
     });
     return result;
   };
@@ -141,9 +142,10 @@ export const FirebaseProvider = ({ children }) => {
     price,
     qty,
     address,
-    orderId
+    orderId,
+    userId
   ) => {
-    const docRef = doc(db, "userOrders", userState.uid, "orders", orderId);
+    const docRef = doc(db, "userOrders", userId, "orders", orderId);
     const result = await setDoc(docRef, {
       bookName: bookName,
       bookId: bookId,
@@ -167,20 +169,19 @@ export const FirebaseProvider = ({ children }) => {
   const getOrderDetail = async (bookId) => {
     const collectionRef = collection(db, "books", bookId, "orders");
     const result = await getDocs(collectionRef);
-    console.log(result.docs);
     return result.docs;
   };
 
-  const updateOrderStatus = async (bookId, orderId, userId) => {
+  const updateOrderStatus = async (bookId, orderId, customerId) => {
     const orderRef = doc(db, "books", bookId, "orders", orderId);
-    const userOrderRef = doc(db, "userOrders", userId, "orders", orderId);
+    const userOrderRef = doc(db, "userOrders", customerId, "orders", orderId);
     const sellerStatus = updateDoc(orderRef, {
       completed: true,
     });
-    const userStatus = updateDoc(userOrderRef, {
+    const customerStatus = updateDoc(userOrderRef, {
       confirmed: true,
     });
-    return await Promise.all([sellerStatus, userStatus]);
+    return await Promise.all([sellerStatus, customerStatus]);
   };
 
   const getPurchasesList = async () => {

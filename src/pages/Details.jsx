@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { useFirebase } from "../store/firebase";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
@@ -45,7 +45,7 @@ const DetailsPage = () => {
   const handleOrder = async () => {
     try {
       const result = await firebase.placeOrder(params.bookId, qty, address);
-      console.log(result.id);
+
       const setUserOrderDetails = await firebase.setUserOrder(
         params.bookId,
         data.name,
@@ -53,7 +53,8 @@ const DetailsPage = () => {
         data.price,
         qty,
         address,
-        result.id
+        result.id,
+        firebase.userState.uid
       );
       handleShow();
     } catch (error) {
@@ -79,6 +80,14 @@ const DetailsPage = () => {
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
             Close
+          </Button>
+          <Button variant="secondary" onClick={handleClose}>
+            <Link
+              to={"/book/view/purchases"}
+              style={{ color: "white", textDecoration: "none" }}
+            >
+              View Purchases
+            </Link>
           </Button>
         </Modal.Footer>
       </Modal>
