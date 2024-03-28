@@ -24,13 +24,16 @@ import {
 } from "firebase/firestore";
 import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
 
+const apiKey = import.meta.env.VITE_TEST_FIREBASE_API_KEY;
+const appId = import.meta.env.VITE_TEST_FIREBASE_APP_ID;
+
 const firebaseConfig = {
-  apiKey: "AIzaSyCoGOmk6Zr8GPZVtSTOksrnCc2OrFC5RBI",
+  apiKey: apiKey,
   authDomain: "bookify-b7f70.firebaseapp.com",
   projectId: "bookify-b7f70",
   storageBucket: "bookify-b7f70.appspot.com",
   messagingSenderId: "783019915990",
-  appId: "1:783019915990:web:f82aa21356b1ab8cc5a777",
+  appId: appId,
 };
 
 const app = initializeApp(firebaseConfig);
